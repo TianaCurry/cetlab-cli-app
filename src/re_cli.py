@@ -228,6 +228,8 @@ def main():
             values.clean_ZM()
         elif args.malawi:
             values.clean_MW()
+        elif args.angola:
+            values.clean_AO()
 
 # execute
 if __name__ == "__main__":
