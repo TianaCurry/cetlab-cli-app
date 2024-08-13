@@ -393,6 +393,50 @@ class ReDataframes:
             malawi_demand_df = malawi_demand_df.sort_values(by=['year','month', 'day','hour'])
             
         malawi_demand_df.to_csv(self.exported, index=False)                                    # exporting a csv file into given directory
+
+    # creating a User-defined function UDF of the above code 
+    def clean_AO(self):
+        """ This function will clean raw data sets in the format of the Lesotho_Load_Profile_2017_2019 xlsx file
+            and create a dataframe with the demand,hour,year,month,day columns from the dataset. Then it will export a csv file to your directory. 
+            - The arugment 'self.imported' is the path to where you stored your xlsx file with the data set to clean 
+            - The argument 'self.exported' is the path to where you want to store the new 'clean' csv file dataframe: 
+                        example - '/(your desired directory path)/(name of file).csv' """ 
+        path = self.imported
+        Angola_raw_data = pd.read_csv(path) # importing csv file with Angola raw dataset 
+        Angola_demand = Angola_raw_data.iloc[3:369,1:27] # creating dataframe selecting desired rows and columns
+        Angola_demand = Angola_demand.reset_index(drop = True) # reseting index
+
+        new_header = Angola_demand.iloc[0] # making first row into header for dataframe
+        Angola_demand = Angola_demand[1:] # making dataframe into every row after first row
+        Angola_demand.columns = new_header # inserting new header into dataframe
+        
+        Angola_demand = Angola_demand.drop(columns = 'Dia') # dropping column called 'Dia'
+        Angola_demand = Angola_demand.set_index('Data') # making data column into index column to apply stack funciton
+        new_Angola_demand_df = Angola_demand.stack() #using stack function to sack desired columns into one column with corresponding hour
+        Angola_demand_2018 = new_Angola_demand_df.to_frame() # changing data set type into a dataframe
+
+        Angola_demand_2018 = Angola_demand_2018.rename(columns={0:"system_demand_[MW]"}) # renaming columns in dataframe
+        Angola_demand_2018 = Angola_demand_2018.reset_index() # reseting index to make date column into first column of dataset
+        Angola_demand_2018 = Angola_demand_2018.rename(columns = {"Data":"date",0:"hour"}) # renaming columns in dataframe
+        Angola_demand_2018["date"].astype(str) # changinging 'date' column into string to split date into 3 columns
+        
+        # spliting date column into 3 columns divided by / to have a month, day and year column
+        Angola_demand_2018[['month','day','year']] = Angola_demand_2018.date.str.split("/",expand=True,)
+        Angola_demand_2018['hour'] = Angola_demand_2018['hour'].astype(int) # changing sting data type into int data type
+        Angola_demand_2018['hour'] = Angola_demand_2018['hour']+1 # changing hour column from 0-23 to 1-24
+        
+        Angola_demand_2018['year'] = Angola_demand_2018['year'].astype(int) # changing year column into int data type
+        Angola_demand_2018['year'] = Angola_demand_2018['year']+2000 # chaning year column value from 18 to 2018
+        
+        Angola_demand_2018['system_demand_[MW]'] = Angola_demand_2018['system_demand_[MW]'].astype(str) # change column to string value to take out comma
+        Angola_demand_2018['system_demand_[MW]'] = Angola_demand_2018['system_demand_[MW]'].str.replace(',', '') # removing comma from data values
+        # rearranging columns in dataframe 
+        Angola_demand_2018 = Angola_demand_2018[['hour','day','month','year','system_demand_[MW]']] # rearranging columns in dataset 
+        Angola_demand_2018[['hour','day','month']] = Angola_demand_2018[['hour','day','month']].astype(int) # changing columns into int values
+        Angola_demand_2018['system_demand_[MW]'] = Angola_demand_2018['system_demand_[MW]'].astype(float) # converting column to float value because it has values after the decimal                                                                
+
+        Angola_demand_2018.to_csv(self.exported, index=False)                                      # exporting a csv file into given directory
+        return 
         
     def testing(self):
         print("Connected to re_func module")

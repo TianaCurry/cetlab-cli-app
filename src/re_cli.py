@@ -44,6 +44,13 @@ class Singleton:
         # optional arguments
         
         # official optional arguments
+        parser.add_argument("-ao", "--angola", action="store_true", help=
+              """This function will clean raw data sets in the format of the Lesotho_Load_Profile_2017_2019 xlsx file
+                 and create a dataframe with the demand,hour,year,month,day columns from the dataset. Then it will export a csv file to your directory. 
+                   - The arugment 'self.imported' is the path to where you stored your xlsx file with the data set to clean 
+                   - The argument 'self.exported' is the path to where you want to store the new 'clean' csv file dataframe: 
+                        example - '/(your desired directory path)/(name of file).csv'"""
+        )
         parser.add_argument("-sz", "--eswatini", action="store_true", help=
               """ This function will clean raw data sets in the format of the EDM Hourly_Load_2017_2018_Data xlsx file
                   and create a dataframe with the demand,hour,year,month,day columns from the dataset. Then it will export a csv file to your directory. 
