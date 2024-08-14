@@ -233,39 +233,35 @@ class ReDataframes:
                         example - '/(your desired directory path)/(name of file).csv' 
             - The argument 'self.year' is the year (in the form of an integer) on the spreadsheet you want to pull information for
             - I made corrections on orginal xlsx file for the dates because date 1/13/18-1/20/18 were in a different format than the others, double check dates are in the same format""" 
-        path = self.imported                                                          # imported xlsx file
-        year = str(self.year)                                                     # converting c value to string value 
-        Eswatini_raw_data_df = pd.read_excel(path, sheet_name = year)     # pulling the second sheet from the xlsx file and automatically turns the results into a dataframe 
-        Eswatini_df = Eswatini_raw_data_df[['DATE','TIME','SYST']]        # selecting columns 'DATE', 'TIME','SYST' and creating data frame
+        path = self.imported                                                                                  # imported xlsx file
+        year = str(self.year)                                                                                 # converting c value to string value 
+        # creating dataframe
+        raw_data = pd.read_excel(path, sheet_name=year)
+        data_frame = raw_data.loc[:, ['DATE','TIME','SYST']]
         
-        # changing date_time data type into string 
-        Eswatini_df['DATE'] = Eswatini_df['DATE'].astype('str') 
-        # spliting the date_time column into 2 new columns titled date and hour 
-        Eswatini_df[['date','unused_hours']] = Eswatini_df.DATE.str.split(" ", expand=True)
-        # splitint the date column into 3 new columns titled year month day 
-        Eswatini_df[['year','month','day']] = Eswatini_df.date.str.split("-", expand=True)
+        # converting data column into 3 columns [year, day, month] as string
+        data_frame = data_frame.astype({"DATE":str})
+        data_frame['DATE'] = data_frame['DATE'].str.slice(0,11)
+        data_frame[['year','day','month']] = data_frame.DATE.str.split("-",expand=True)
+        data_frame = data_frame.drop(['DATE'], axis=1)
         
-        hours = pd.Series(range(1,25)) # creating vector with values 1 -24 
-        hours_set = hours.repeat(2).reset_index(drop = True)              # repeating values in hours vector each twice (to much hour and half-hour value)
-        total_hours = pd.concat([hours_set]*365, ignore_index=True)       # have the vector repeat 365 times to correspond to the number of hours in a year 
-        Eswatini_df.loc[:,'hour'] = total_hours                           # creating new column titled 'hour' with values of the vector = total hours
+        # create hour column to replace half hour data, by changing half hour to it's whole hour
+        hours_dlb_series = pd.Series(range(1,25)).repeat(2).reset_index(drop = True)                           # creating vector with values 1 -24 
+        total_hours = pd.concat([hours_dlb_series]*365, ignore_index=True)                                     # have the vector repeat 365 times to correspond to the number of hours in a year 
+        data_frame.loc[:,'TIME'] = total_hours                                                                 # creating new column titled 'hour' with values of the vector = total hours
         
-        count = pd.Series(range(8760))                                    # creating vector count with total hours in a year 
-        double_count = count.repeat(2).reset_index(drop = True)           # repeating each value in vector count twice to match half-hour and hour values 
-        Eswatini_df['count'] = double_count                               # creating new column 'count' with values = doube_count vector 
+        # create count for every two values to find average load per hour
+        double_count = pd.Series(range(8760)).repeat(2).reset_index(drop = True)                               # repeating each value in vector count twice to match half-hour and hour values 
+        data_frame['count'] = double_count                                                                     # creating new column 'count' with values = doube_count vector 
         
-        # converting day, month and year columns into numeric values to use mean() for groupby ()
-        Eswatini_df['day'] = pd.to_numeric(Eswatini_df.day)
-        Eswatini_df['month'] = pd.to_numeric(Eswatini_df.month)
-        Eswatini_df['year'] = self.year
+        # before take average and group by count, convert values to numeric
+        data_frame = data_frame.apply(pd.to_numeric)
+        group_df = data_frame.groupby('count').mean()                                                           # using group,by function to group by count, taking 17520 values to 8760 values
 
-        group_Eswatini = Eswatini_df.groupby('count').mean()              # using group,by function to group by count, taking 17520 values to 8760 values 
-        
-        Eswatini_demand_df = group_Eswatini[['hour','day','month','year','SYST']].reset_index(drop = True)    # creating data frame with selected columns with index reset, dropping 'count' index 
-        Eswatini_demand_df = Eswatini_demand_df.rename(columns = {"SYST": "system_demand_[mw]"})              # changing column name 'syst' to name 'system_demand_[mw]' 
-        
-        Eswatini_demand_df = Eswatini_demand_df[['hour','day','month','year','system_demand_[mw]']]
-        Eswatini_demand_df.to_csv(self.exported, index=False)                                                            # exporting a csv file into given directory
+        final_df = group_df[['TIME','day','month','year','SYST']]\
+                    .reset_index(drop = True).rename(columns = {"SYST": "system_demand_[mw]","TIME":"hour"})    # creating data frame with selected columns with index reset, dropping 'count' index 
+        final_df = final_df.astype({'hour':int,'day':int, 'month':int, 'year':int})                             # converting date and time columns to interger dtypes
+        final_df.to_csv(self.exported, index=False) 
         return
 
     # creating a User-defined function UDF of the above code 

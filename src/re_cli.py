@@ -13,7 +13,7 @@ class Singleton:
         self.file = file_arg
         self.year = year_arg
         self.cwd = os.getcwd()
-        self.df = f'{self.cwd}/{self.file[0:-4]}-dataframe.csv' if self.file != None else f'{self.cwd}'
+        self.df = f'{self.cwd}/{self.file[0:-5]}-dataframe.csv' if self.file != None else f'{self.cwd}'
 
         # messages
         self.df_location_msg = f'Exporting to: "{self.df}"'
