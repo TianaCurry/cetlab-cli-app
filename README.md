@@ -47,9 +47,11 @@ zope.interface==7.0.1
 
 1. start will the help command to view all command options and for momre details on the functions
 
+![GitHub link](https://github.com/TianaCurry/cetlab-cli-app/blob/b0dfea656f0face8422ce55f919bb12e49f33dc1/images/Screenshot%202024-08-13%20at%209.58.16%E2%80%AFPM.png)
 
-2. check if your raw data fits the strict format structure for the functions
-3. selected function by country two letter code name in the format `clean_<county-abbreviation>`
-4. run command using mock data
-5. follow prompt (if provided)
-6. locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+
+1. check if your raw data fits the strict format structure for the functions
+2. selected function by country two letter code name in the format `clean_<county-abbreviation>`
+3. run command using mock data
+4. follow prompt (if provided)
+5. locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
