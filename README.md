@@ -36,24 +36,6 @@
     </ul>
 </ol>
 
---------
-
-+ Authors & Acknowledgment
-+ Overview
-+ Description
-  + Goals
-    + Research Goals
-    + Project Goals
-  + Using this app
-    + Data
-    + Usage
-+ How-to Guide
-  + Installation
-    + Dependencies
-    + Modules
-  + Using Commands
-    + Steps: 1-7
-
 ## Authors & Acknowledgment
 
 Author: Tiana Curry
