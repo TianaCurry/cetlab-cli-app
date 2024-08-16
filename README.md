@@ -20,7 +20,7 @@ Table of Contents
 Overview
 --------------------------
 
-This program is a command line interface application (CLI app), developed in Python to automate data wrangling transformations by cleaning and structuring energy demand (load) data from electricity agencies in 10 Southern African countries. The CLI app supports the data analytics and data pipeline development for the <u>UC Santa Barbara, Bren School, Clean Energy Transformation lab (CETlab)</u> research team.
+This program is a command line interface application (CLI app), developed in Python to automate data wrangling transformations by cleaning and structuring energy demand (load) data from electricity agencies in 10 Southern African countries. The CLI app supports the data analytics and data pipeline development for the <ins>UC Santa Barbara, Bren School, Clean Energy Transformation lab (CETlab)</ins> research team.
 
 The CETlab application was completely designed, developed, and maintain by the software engineer and data scientist **Tiana Curry**. This CLI app is an example of a complete project workflow from problem, idea to deployment. It is a full stack, Object-Oriented Program, Python application that solves common organization issues in data pipeline development used in the university and academic research sector.
 
