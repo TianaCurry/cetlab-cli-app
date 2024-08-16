@@ -42,7 +42,7 @@ Author: Tiana Curry
 
 Thank you to the <ins>Clean Energy Transformation Lab</ins> at the University of California Santa Barbara, and the Prinicpal Investigator Dr. Ranjit Deshmukh
 
-## Summary
+## Overview
 
 This program is a command line interface application (CLI app), developed in Python to automate data wrangling transformations by cleaning and structuring energy demand (load) data from electricity agencies in 10 Southern African countries. The CLI app supports the data analytics and data pipeline development for the UC Santa Barbara, Bren School, Clean Energy Transformation lab (CETlab) research team.
 
@@ -114,7 +114,7 @@ I built two modules
 + `re_cli`: creates commandline application functionality
 + `re_func`: holds data wrangling functions
 
-### Using Commands
+### Example
 
 #### Step 1
 
