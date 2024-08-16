@@ -38,9 +38,9 @@
 
 ## Authors & Acknowledgment
 
-Author: Tiana Curry
+Author: [Tiana Curry](https://www.linkedin.com/in/tiana-curry/)
 
-Thank you to the <ins>Clean Energy Transformation Lab</ins> at the University of California Santa Barbara, and the Prinicpal Investigator Dr. Ranjit Deshmukh
+Thank you to the [Clean Energy Transformation Lab](https://github.com/cetlab-ucsb) at the University of California Santa Barbara, and the Prinicpal Investigator [Dr. Ranjit Deshmukh](https://cetlab.es.ucsb.edu/people/ranjit-deshmukh)
 
 ## Overview
 
@@ -200,3 +200,9 @@ View final clean tabular dataframe, ready for further analysis. Each dataframe h
 
 <br>
 <img src="./__md-pics/12-results-desired-column-names.png" alt="" width="350"/>
+
+## License
+
+This project is [MIT](https://github.com/TianaCurry/cetlab-cli-app?tab=MIT-1-ov-file) licensed
+<br>
+<p style="font-size: 10px">First published: 2019; last updated: 2024</p>
