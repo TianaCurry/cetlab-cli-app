@@ -65,41 +65,77 @@ zope.interface==7.0.1
 
 ### Running commands
 
-#### 1. start will the help command to view all command options and for momre details on the functions
+#### 1. Check if your raw data fits the strict format structure for the functions. There are four main things to check:
+
+- **the column names**
+- **data enteries contain a load demand per half hour**
+- **the number of rows**
+- **the name for each sheet.**
+
+<br>
+a. Make sure you have four columns with the following column names 'WEEK', 'DAY', 'DATE', 'TIME', 'SYST'.
+<br>
+<br>
+<img src="./__md-pics/2-input-columns-names.png" alt="" width="400"/>
+<br>
+<br>
+b. Starting from Jan 1, 20xx to Dec 31, 20xx, there should be an entry for every every half hour for every day of the year in the following format
+<br>
+<br>
+<img src="./__md-pics/3-load-by-half-hour.png" alt="" width="400"/>
+<br>
+<br>
+c. The number of rows should be 17521
+<br>
+<br>
+<img src="./__md-pics/4-total-rows.png" alt="" width="400"/>
+<br>
+<br>
+d. The 'DATE' column is day/month/year in the format dd/mm/yyyy
+<br>
+<br>
+<img src="./__md-pics/5-date-in-format-ddmmyyyy.png" alt="" width="400"/>
+<br>
+<br>
+e. The sheet name should be a four digit year.
+<br>
+<br>
+<img src="./__md-pics/6-sheet-name-as-year.png" alt="" width="400"/>
+
+#### 2. start will the help command to view all command options and for momre details on the functions
 
 ```bash
 % ./re_cli.py -h
 ```
 
-![run ./re_cli.py -h command](https://github.com/TianaCurry/cetlab-cli-app/blob/b0dfea656f0face8422ce55f919bb12e49f33dc1/images/Screenshot%202024-08-13%20at%209.58.16%E2%80%AFPM.png)
+<br>
+<img src="./__md-pics/7-cli-options-country-codes.png" alt="" width="600"/>
 
-#### 2. check if your raw data fits the strict format structure for the functions
+#### 3. We can see the command options with a more detailed description, to use the mock dataset we will use the function with the command `-sz` `--eswatini`.
 
-![link]()
-![link]()
-![link]()
-![link]()
-![link]()
+<br>
+<img src="./__md-pics/8-desired-function-details.png" alt="" width="600"/>
 
-#### 3. selected function by country two letter code name in the format `clean_<county-abbreviation>`
-
-![link]()
-![link]()
-
-#### 4. run command using mock data
+#### 4. Run command using mock data. We'll use the function by country two letter code name to run the command
 
 ```bash
-% ./re_cli.py ../mock -sz
+Syntax: % ./re_cli.py <file-name> -<county-code>
 ```
 
-#### 5. follow prompt (if provided)
+<br>
+<img src="./__md-pics/9-run-data-wrangling-function.png" alt="" width=""/>
 
-```bash
-% ./re_cli.py -h
-```
+#### 5. follow prompt (if provided). For the Eswatini function the prompt will be the enter the year of the Excel file sheet
 
-#### 6. locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+<br>
+<img src="./__md-pics/10-prompt-input.png" alt="" width=""/>
 
-```bash
-% ./re_cli.py -h
-```
+#### 6. Three prompts will popup if your entry is validated, indicating the data cleaning process has began. And you can locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+
+<br>
+<img src="./__md-pics/11-verifying-input-vallues.png" alt="" width=""/>
+
+#### 7. View final clean tabular dataframe, ready for further analysis. Each dataframe has the same format for all countries with the following columns: 'hour', 'day', 'month', 'year', 'system_demand[mw]'
+
+<br>
+<img src="./__md-pics/12-results-desired-column-names.png" alt="" width="450"/>
