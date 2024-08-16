@@ -49,23 +49,23 @@ tzdata==2024.1
 zope.interface==7.0.1
 ```
 
-**The virtual environment I created was "cetlab-cli"; and I directly imported the following <u>libraries</u>:**
+##### The virtual environment I created was "cetlab-cli"; and I directly imported the following <u>libraries</u>:
 
-- numpy
-- pandas
-- os
-- sys
-- argparse
-- datetime
++ numpy
++ pandas
++ os
++ sys
++ argparse
++ datetime
 
-**I built two modules**
+##### I built two modules
 
-- `re_cli`: creates commandline application functionality
-- `re_func`: holds data wrangling functions
++ `re_cli`: creates commandline application functionality
++ `re_func`: holds data wrangling functions
 
 ### Running commands
 
-1. start will the help command to view all command options and for momre details on the functions
+#### 1. start will the help command to view all command options and for momre details on the functions
 
 ```bash
 % ./re_cli.py -h
@@ -73,10 +73,33 @@ zope.interface==7.0.1
 
 ![run ./re_cli.py -h command](https://github.com/TianaCurry/cetlab-cli-app/blob/b0dfea656f0face8422ce55f919bb12e49f33dc1/images/Screenshot%202024-08-13%20at%209.58.16%E2%80%AFPM.png)
 
+#### 2. check if your raw data fits the strict format structure for the functions
 
-2. check if your raw data fits the strict format structure for the functions
+![link]()
+![link]()
+![link]()
+![link]()
+![link]()
 
-3. selected function by country two letter code name in the format `clean_<county-abbreviation>`
-4. run command using mock data
-5. follow prompt (if provided)
-6. locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+#### 3. selected function by country two letter code name in the format `clean_<county-abbreviation>`
+
+![link]()
+![link]()
+
+#### 4. run command using mock data
+
+```bash
+% ./re_cli.py ../mock -sz
+```
+
+#### 5. follow prompt (if provided)
+
+```bash
+% ./re_cli.py -h
+```
+
+#### 6. locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+
+```bash
+% ./re_cli.py -h
+```
