@@ -34,6 +34,7 @@
       <li>Steps: 1-7</li>
       </ul>
     </ul>
+  <li>License</li>
 </ol>
 
 ## Authors & Acknowledgment
