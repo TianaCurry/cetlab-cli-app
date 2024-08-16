@@ -1,30 +1,55 @@
-# cetlab-cli-app
+# <center> CETlab Command Line Interface Application For Automating Data Wrangling Energy Demand (Load) Data </center>
 
-## Table of Contents
+Table of Contents
+--------------------------
 
 + Overview
 + Background
+  + Goal
+    + Research
+    + Application
+  + Using this App
+    + Data
+    + How-to Guide Details
 + How-to Guide
   + Dependencies
+  + Modules
   + Running Commands
+    + Steps 1-7
 
-## Overview
+Overview
+--------------------------
 
-This program was developed using Python and is a data wrangling command line interface app to clean, structure, and transform energy demand (load) data for 10 Southern African countries; for the UC Santa Barbara Bren School Clean Energy Transformation lab (CETlab) research team. This program was completely designed, developed and maintain by the Software Engineer, Data Scienctist Tiana Curry. Which solved data pipeline issues for the CETlab by automating the data wrangling process.
+This program is a command line interface application (CLI app), developed in Python to automate data wrangling transformations by cleaning and structuring energy demand (load) data from electricity agencies in 10 Southern African countries. The CLI app supports the data analytics and data pipeline development for the <u>UC Santa Barbara, Bren School, Clean Energy Transformation lab (CETlab)</u> research team.
 
-## Background
+The CETlab application was completely designed, developed, and maintain by the software engineer and data scientist **Tiana Curry**. This CLI app is an example of a complete project workflow from problem, idea to deployment. It is a full stack, Object-Oriented Program, Python application that solves common organization issues in data pipeline development used in the university and academic research sector.
 
-This program is a command line interface application (cli app) and is designed to clean datasets for the CETlab GridPath software working in collaboration with specific electricity to companies throughout Southern Africa. The goal is to automate the data wrangling, cleaning and structuring process for the data coming from these specific agencies. That provides a very simply user experience, where users can simply input their raw datasets and output a clean tabular dataframe perfect for predictive and Machine Learning Models. CETlab and GridPath goal is to provide sustainable and reliable renewable energy to 10+ countries throughout Africa, to support their growing economies and increase access to essential resources; while leading the way for clean energy use for large populations.
+Background
+--------------------------
 
-The results of this CETlab cli app was an increase in efficiency and accuracy while contributing an algorithm that's reusable, reproducible, and utilize by the entire CETlab. The CETlab cli app currently provides data wrangling functions for electricity companies in the following Southern African countries: Angola, Eswatini, Lesotho, Malawi, Mozambique, Namibia, South Africa, Zambia, Zimbabwe. Each electricity company had very differnt was of storing and documenting their data which resulted in creating different algorithms tailered to their data documenting methods.
+### Goals
 
-The data used in the CETlab is private and not accessible to the public in anyway, and so a mock dataframe was created and provided using random data points to show functionality of this program. A test input dataset and clean dataframe was provided to test the Eswatini function to show full use of the cli app. You can find the mock data and dataframe results in the test-data directory.
+#### Research goal
 
-Below is a how-to guide on what commands and functions are available to use, including data wrangling functions for all 10 countries, and test functions to see simple functionality. To view only the functions for data cleaning you can access this information in the Data Wrangling Functions Jupyter notebook. The complete source code for the cli app can be found in the src directory which includes two main scripts the `re_cli.py` script for command line functionality and the `re_func.py` script for data wrangling functions.
+This program is a command line interface application (CLI app) designed to clean datasets for the UC Santa Barbara, Bren School, Clean Energy Transformation lab (CETlab) and GridPath software. The CETlab works in collaboration with specific electricity agencies and other stakeholders throughout Southern Africa to provide sustainable renewable energy. The CETlab and GridPath goal is to provide reliable renewable energy to 10+ countries throughout Africa, to support their growing economies and increase access to essential resources; while leading the way to clean energy use for large populations.
 
-The CETLab cli app is an example of an idea to deployment, full stack, Object-Oriented Program Python application that solves common organization issues in data pipeline development for real world use.
+#### Application goal
 
-## How to Guide
+The goal of the CETlab CLI app is to automate the data wrangling, cleaning and structuring process for datasets coming from the specific electricity agencies. By providing a simple application where users can simply input their raw datasets, and the CLI app will output a clean tabular data frame, perfect for further analysis, and predictive/machine learning models. The CLI app provides data wrangling functions for electricity companies in the following Southern African countries: Angola, Eswatini, Lesotho, Malawi, Mozambique, Namibia, South Africa, Zambia, Zimbabwe. Each electricity company had different ways of collecting, storing, and documenting their data, the solution was to provide different functions for each country tailored to each electricity agencies data collection methods. The results of the application were an increase in efficiency and accuracy in analytics, initial development of the data pipeline, and a contribution of a reusable and reproducible CLI app utilize by the entire CETlab. 
+
+### Using this app
+
+#### Data
+
+The data collected by the electricity agencies then used by the CETlab is not accessible to the public. So, a mock dataset was created, filled with random data points, to show functionality of the CLI app. The test input dataset and a version of the output clean data frame is provided to specifically show how the Eswatini demand data (load) was handled and structured in this application. You can find the mock input dataset and output data frame results in the `test-data` directory.
+
+#### How-to Guide
+
+Below you can find a quick “How-to Guide” to learn how to use, access, and run commands to clean raw datasets using the CETlab CLI app. There are data wrangling commands for all 10 countries and a set of simple test functions to see the basic functionality of this program. To only view the data wrangling functions, you can access this information in the Data Wrangling Functions Jupyter notebook. To view the complete source code for the CETlab CLI app, you can view this code in the `src` directory. The `src` directory includes two main scripts the `re_cli.py` script for command line functionality and the `re_func.py` script for data wrangling functions. 
+
+
+How to Guide
+--------------------------
 
 ### Dependencies
 
@@ -49,7 +74,9 @@ tzdata==2024.1
 zope.interface==7.0.1
 ```
 
-##### The virtual environment I created was "cetlab-cli"; and I directly imported the following <u>libraries</u>:
+### Modules
+
+#### The virtual environment I created was "cetlab-cli"; and I directly imported the following <u>libraries</u>:
 
 + numpy
 + pandas
@@ -58,84 +85,94 @@ zope.interface==7.0.1
 + argparse
 + datetime
 
-##### I built two modules
+#### I built two modules
 
 + `re_cli`: creates commandline application functionality
 + `re_func`: holds data wrangling functions
 
 ### Running commands
 
-#### 1. Check if your raw data fits the strict format structure for the functions. There are four main things to check:
+#### Step 1
 
-- **the column names**
-- **data enteries contain a load demand per half hour**
-- **the number of rows**
-- **the name for each sheet.**
+##### Check if your raw data fits the strict format structure for the functions. There are four main things to check
+
++ the column names
++ data enteries contain a load demand per half hour
++ the number of rows
++ Date format
++ the name for each sheet.
 
 <br>
-a. Make sure you have four columns with the following column names 'WEEK', 'DAY', 'DATE', 'TIME', 'SYST'.
-<br>
+<b>a.</b> Make sure you have four columns with the following column names 'WEEK', 'DAY', 'DATE', 'TIME', 'SYST'.
 <br>
 <img src="./__md-pics/2-input-columns-names.png" alt="" width="300"/>
 <br>
-<br>
-b. Starting from Jan 1, 20xx to Dec 31, 20xx, there should be an entry for every every half hour for every day of the year in the following format
-<br>
+
+<b>b.</b> Starting from Jan 1, 20xx to Dec 31, 20xx, there should be an entry for every every half hour for every day of the year in the following format
 <br>
 <img src="./__md-pics/3-load-by-half-hour.png" alt="" width="300"/>
 <br>
-<br>
-c. The number of rows should be 17521
-<br>
+
+<b>c.</b> The number of rows should be 17521
 <br>
 <img src="./__md-pics/4-total-rows.png" alt="" width="300"/>
 <br>
-<br>
-d. The 'DATE' column is day/month/year in the format dd/mm/yyyy
-<br>
+
+<b>d.</b> The 'DATE' column is day/month/year in the format dd/mm/yyyy
 <br>
 <img src="./__md-pics/5-date-in-format-ddmmyyyy.png" alt="" width="300"/>
 <br>
-<br>
-e. The sheet name should be a four digit year.
-<br>
+
+<b>e.</b> The sheet name should be a four digit year.
 <br>
 <img src="./__md-pics/6-sheet-name-as-year.png" alt="" width="300"/>
 
-#### 2. start will the help command to view all command options and for momre details on the functions
+#### Step 2
+
+##### Start with the 'help' command to view all command options and for momre details on the functions
 
 ```bash
 % ./re_cli.py -h
 ```
 
 <br>
-<img src="./__md-pics/7-cli-options-country-codes.png" alt="" width="600"/>
+<img src="./__md-pics/7-cli-options-country-codes.png" alt="" width="500"/>
 
-#### 3. We can see the command options with a more detailed description, to use the mock dataset we will use the function with the command `-sz` `--eswatini`.
+#### Step 3
+
+##### We can see the command options with a more detailed description, to use the mock dataset we will use the function with the command `-sz` `--eswatini`.
 
 <br>
-<img src="./__md-pics/8-desired-function-details.png" alt="" width="600"/>
+<img src="./__md-pics/8-desired-function-details.png" alt="" width="500"/>
 
-#### 4. Run command using mock data. We'll use the function by country two letter code name to run the command
+#### Step 4
+
+##### Run command using mock data. We'll use the function by country two letter code name to run the command
 
 ```bash
 Syntax: % ./re_cli.py <file-name> -<county-code>
 ```
 
 <br>
-<img src="./__md-pics/9-run-data-wrangling-function.png" alt="" width=""/>
+<img src="./__md-pics/9-run-data-wrangling-function.png" alt="" width="600"/>
 
-#### 5. follow prompt (if provided). For the Eswatini function the prompt will be the enter the year of the Excel file sheet
+#### Step 5
 
-<br>
-<img src="./__md-pics/10-prompt-input.png" alt="" width=""/>
-
-#### 6. Three prompts will popup if your entry is validated, indicating the data cleaning process has began. And you can locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
+##### Follow prompt (if provided). For the Eswatini function the prompt will be the enter the year of the Excel file sheet
 
 <br>
-<img src="./__md-pics/11-verifying-input-vallues.png" alt="" width=""/>
+<img src="./__md-pics/10-prompt-input.png" alt="" width="600"/>
 
-#### 7. View final clean tabular dataframe, ready for further analysis. Each dataframe has the same format for all countries with the following columns: 'hour', 'day', 'month', 'year', 'system_demand[mw]'
+#### Step 6
+
+##### Three prompts will popup if your entry is validated, indicating the data cleaning process has began. And you can locate output dataframe in current working directory under the format `<input-file-name>-dataframe.csv`
 
 <br>
-<img src="./__md-pics/12-results-desired-column-names.png" alt="" width="450"/>
+<img src="./__md-pics/11-verifying-input-vallues.png" alt="" width="600"/>
+
+#### Step 7
+
+##### View final clean tabular dataframe, ready for further analysis. Each dataframe has the same format for all countries with the following columns: 'hour', 'day', 'month', 'year', 'system_demand[mw]'
+
+<br>
+<img src="./__md-pics/12-results-desired-column-names.png" alt="" width="350"/>
