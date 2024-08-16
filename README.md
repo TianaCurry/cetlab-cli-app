@@ -1,4 +1,4 @@
-# The CETlab Command Line Interface App <br>Automating Data Wrangling for Energy Demand Data (load)
+# The CETlab Command Line Interface App <br> Automating the Data Wrangling process <br> for Energy Demand Data (load)
 
 Table of Contents
 --------------------------
