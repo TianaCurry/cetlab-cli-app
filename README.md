@@ -76,31 +76,31 @@ zope.interface==7.0.1
 a. Make sure you have four columns with the following column names 'WEEK', 'DAY', 'DATE', 'TIME', 'SYST'.
 <br>
 <br>
-<img src="./__md-pics/2-input-columns-names.png" alt="" width="400"/>
+<img src="./__md-pics/2-input-columns-names.png" alt="" width="300"/>
 <br>
 <br>
 b. Starting from Jan 1, 20xx to Dec 31, 20xx, there should be an entry for every every half hour for every day of the year in the following format
 <br>
 <br>
-<img src="./__md-pics/3-load-by-half-hour.png" alt="" width="400"/>
+<img src="./__md-pics/3-load-by-half-hour.png" alt="" width="300"/>
 <br>
 <br>
 c. The number of rows should be 17521
 <br>
 <br>
-<img src="./__md-pics/4-total-rows.png" alt="" width="400"/>
+<img src="./__md-pics/4-total-rows.png" alt="" width="300"/>
 <br>
 <br>
 d. The 'DATE' column is day/month/year in the format dd/mm/yyyy
 <br>
 <br>
-<img src="./__md-pics/5-date-in-format-ddmmyyyy.png" alt="" width="400"/>
+<img src="./__md-pics/5-date-in-format-ddmmyyyy.png" alt="" width="300"/>
 <br>
 <br>
 e. The sheet name should be a four digit year.
 <br>
 <br>
-<img src="./__md-pics/6-sheet-name-as-year.png" alt="" width="400"/>
+<img src="./__md-pics/6-sheet-name-as-year.png" alt="" width="300"/>
 
 #### 2. start will the help command to view all command options and for momre details on the functions
 
